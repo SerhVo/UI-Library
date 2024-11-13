@@ -438,20 +438,32 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_lib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/lib */ "./src/js/lib/lib.js");
 
-(0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])("button").on("click", function () {
-  (0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])("div").eq(0).toggleClass("active");
-});
 
-// console.log($("button").html("Segrey"));
-(0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])("div").click(function () {
-  console.log((0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])(this).index());
-});
-console.log((0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('div').eq(2).find('.some'));
+// $("button").on("click", function () {
+//   $("div").eq(0).toggleClass("active");
+// });
 
-// console.log($(".some").closest(".findmea"));
-// console.log($(".findme").siblings());
-(0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])(".findme").fadeOut(2000);
-(0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])("button").fadeIn(2000);
+// // console.log($("button").html("Segrey"));
+// $("div").click(function () {
+//   console.log($(this).index());
+// });
+
+//  console.log($('div').eq(2).find('.some'));
+
+// // console.log($(".some").closest(".findmea"));
+// // console.log($(".findme").siblings());
+// $(".findme").fadeOut(2000);
+// // $("button").fadeIn(2000);
+
+(0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])("#first").on("click", () => {
+  (0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])("div").eq(1).fadeOut(800);
+});
+(0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('[data-count="second"]').on("click", () => {
+  (0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])("div").eq(2).fadeOut(800);
+});
+(0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])("button").eq(2).on("click", () => {
+  (0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])(".w-500").fadeOut(800);
+});
 })();
 
 /******/ })()

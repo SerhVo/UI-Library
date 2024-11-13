@@ -32,12 +32,12 @@
 }
 .btn:hover {
   background-color: rgb(53, 127.2529644269, 255);
-  color: #fff;
+  color: #ffffff;
 }
 .btn-primary {
   background-color: #025fff;
   border-color: #025fff;
-  color: #fff;
+  color: #ffffff;
 }
 .btn-primary:hover {
   background-color: rgb(0, 75.7233201581, 206);
@@ -45,7 +45,7 @@
 .btn-success {
   background-color: #2a9924;
   border-color: #2a9924;
-  color: #fff;
+  color: #ffffff;
 }
 .btn-success:hover {
   background-color: rgb(30.6666666667, 111.7142857143, 26.2857142857);
@@ -53,7 +53,7 @@
 .btn-danger {
   background-color: #ea2e41;
   border-color: #ea2e41;
-  color: #fff;
+  color: #ffffff;
 }
 .btn-danger:hover {
   background-color: rgb(208.0913043478, 20.9086956522, 39.8260869565);
@@ -61,7 +61,7 @@
 .btn-warning {
   background-color: #ffc907;
   border-color: #ffc907;
-  color: #fff;
+  color: #ffffff;
 }
 .btn-warning:hover {
   background-color: rgb(211, 165.0564516129, 0);
@@ -69,7 +69,7 @@
 .btn-dark {
   background-color: #343a40;
   border-color: #343a40;
-  color: #fff;
+  color: #ffffff;
 }
 .btn-dark:hover {
   background-color: rgb(29.1379310345, 32.5, 35.8620689655);
