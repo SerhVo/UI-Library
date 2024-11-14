@@ -60,3 +60,7 @@ $("#trigger").click(() =>
     },
   })
 );
+
+$()
+  .get("https://jsonplaceholder.typicode.com/photos")
+  .then((res) => console.log(res));
