@@ -4,31 +4,18 @@ const $ = function (selector) {
 
 $.prototype.init = function (selector) {
   if (!selector) {
-    return this; // Если селектор не передан, возвращаем сам объект
+    return this; // {}
   }
 
-  // Проверяем, является ли переданный параметр строкой и не является ли он пустым
-  if (typeof selector !== "string" || selector.trim() === "") {
-    throw new Error("Invalid selector string"); // Выбрасываем ошибку, если селектор невалиден
-  }
-
-  // Проверка на одиночный элемент DOM
   if (selector.tagName) {
     this[0] = selector;
     this.length = 1;
     return this;
   }
 
-  // Если селектор валидный, выполняем поиск элементов
-  try {
-    const elements = document.querySelectorAll(selector);
-    Object.assign(this, elements);
-    this.length = elements.length;
-  } catch (error) {
-    // Если selector невалиден, выбрасываем ошибку
-    throw new Error(`Invalid CSS selector: ${selector}`);
-  }
-
+  const elements = document.querySelectorAll(selector);
+  Object.assign(this, elements); // Метод Object.assign(this, elements) используется для копирования свойств из коллекции элементов (которая получается через document.querySelectorAll) в текущий объект (this).
+  this.length = elements.length;
   return this;
 }; // Этот метод выполняет логику выбора DOM-элементов:
 // 	•	Если передан пустой селектор (например, ""), возвращается сам объект без изменения.
@@ -42,13 +29,8 @@ window.$ = $;
 
 export default $; // Экспортирует $, что позволяет использовать ее в других модулях с помощью импорта, если вы используете ES-модули.
 
+//  ----------- Пример использования:
 
-
-//  ----------- Пример использования с обработкой ошибок:
-
-// try {
-//   const elements = $(".my-class");
-//   console.log(elements.length); // Выводим количество элементов
-// } catch (error) {
-//   console.error(error.message); // Обработка ошибок
-// }
+// const elements = $('.my-class'); // Получаем все элементы с классом 'my-class'
+// console.log(elements.length); // Выводим количество найденных элементов
+// $('.my-class').addClass('new-class'); // Добавляем класс 'new-class' ко всем элементам с классом 'my-class'
