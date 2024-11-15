@@ -1,20 +1,23 @@
 import $ from "../core";
 
+// Добавляет функциональность табов для всех выбранных элементов
 $.prototype.tab = function () {
   for (let i = 0; i < this.length; i++) {
+    // Устанавливаем обработчик клика на каждый таб
     $(this[i]).on("click", () => {
       $(this[i])
-        .fadeIn(1500)
-        .addClass("tab-item--active")
-        .siblings()
-        .removeClass("tab-item--active")
-        .closest(".tab")
-        .find(".tab-content")
-        .removeClass("tab-content--active")
-        .eq($(this[i]).index())
-        .addClass("tab-content--active");
+        .fadeIn(1500) // Плавное появление выбранного таба
+        .addClass("tab-item--active") // Добавляем класс активности для текущего таба
+        .siblings() // Получаем остальные табы
+        .removeClass("tab-item--active") // Убираем класс активности у других табов
+        .closest(".tab") // Находим общий родительский элемент с классом "tab"
+        .find(".tab-content") // Находим все элементы с контентом табов
+        .removeClass("tab-content--active") // Убираем класс активности у контента всех табов
+        .eq($(this[i]).index()) // Находим контент, соответствующий выбранному табу
+        .addClass("tab-content--active"); // Добавляем класс активности к нужному контенту
     });
   }
 };
 
+// Инициализация функциональности табов для всех элементов с классом "tab-item" в пределах [data-tabpanel]
 $("[data-tabpanel] .tab-item").tab();

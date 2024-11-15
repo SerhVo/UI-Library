@@ -1,14 +1,18 @@
 import $ from "../core";
 
+// Добавляет функциональность модального окна для всех выбранных элементов
 $.prototype.modal = function (created) {
   for (let i = 0; i < this.length; i++) {
     const target = this[i].getAttribute("data-target");
+
+    // Устанавливаем обработчик клика для открытия модального окна
     $(this[i]).click((e) => {
       e.preventDefault();
       $(target).fadeIn(500);
       document.body.style.overflow = "hidden";
     });
 
+    // Закрываем модальное окно при клике на элементы с атрибутом data-close
     const closeElements = document.querySelectorAll(`${target} [data-close]`);
     closeElements.forEach((elem) => {
       $(elem).click(() => {
@@ -20,6 +24,7 @@ $.prototype.modal = function (created) {
       });
     });
 
+    // Закрываем модальное окно при клике на область вне содержимого модального окна
     $(target).click((e) => {
       if (e.target.classList.contains("modal")) {
         $(target).fadeOut(500);
@@ -32,15 +37,18 @@ $.prototype.modal = function (created) {
   }
 };
 
+// Инициализация функциональности модального окна для всех элементов с атрибутом data-toggle="modal"
 $('[data-toggle="modal"]').modal();
 
+// Создает модальное окно с заданным текстом и кнопками
 $.prototype.createModal = function ({ text, btns } = {}) {
   for (let i = 0; i < this.length; i++) {
+    // Создаем контейнер для модального окна
     let modal = document.createElement("div");
     modal.classList.add("modal");
     modal.setAttribute("id", this[i].getAttribute("data-target").slice(1));
 
-    // btns = {count: num, settings: [[text, classNames=[], close, cb]]}
+    // btns = {count: количество кнопок, settings: [[текст кнопки, классы, закрывать ли, колбэк]]}
     const buttons = [];
     for (let j = 0; j < btns.count; j++) {
       let btn = document.createElement("button");
@@ -56,6 +64,7 @@ $.prototype.createModal = function ({ text, btns } = {}) {
       buttons.push(btn);
     }
 
+    // Разметка HTML для модального окна с заголовком и телом
     modal.innerHTML = `
         <div class="modal-dialog">
             <div class="modal-content">
@@ -77,8 +86,11 @@ $.prototype.createModal = function ({ text, btns } = {}) {
         </div>
         `;
 
+    // Добавляем кнопки в футер модального окна
     modal.querySelector(".modal-footer").append(...buttons);
     document.body.appendChild(modal);
+
+    // Инициализация созданного модального окна
     $(this[i]).modal(true);
     $(this[i].getAttribute("data-target")).fadeIn(500);
   }
